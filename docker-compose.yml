@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: xa
+      POSTGRES_USER: xa
+      POSTGRES_PASSWORD: xa
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U xa -d xa"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
